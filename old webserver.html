@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width = device-width, initial-scale = 1.0, maximum-scale = 1.0, user-scalable=0">
+		<title>OMNI BOT</title>
+		<style>
+			body {
+				background-color: #343a40;
+				font-family: Arial, Helvetica, Sans-Serif;
+				Color: #000000;
+			}
+
+			#JD {
+				text-align: center;
+			}
+
+			#JD {
+				text-align: center;
+				font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+				font-size: 24px;
+			}
+
+			.foot {
+				text-align: center;
+				font-family: "Comic Sans MS", cursive;
+				font-size: 30px;
+				color: #F00;
+			}
+
+			.button {
+				border: none;
+				color: black;
+				padding: 17px;
+				text-align: center;
+				text-decoration: none;
+				display: inline-block;
+				font-size: 16px;
+				margin: 4px 2px;
+				cursor: pointer;
+				border-radius: 12px;
+				width: 100%;
+			}
+
+			.red {
+				background-color: #f8f9fa;
+			}
+
+			.green {
+				background-color: #f8f9fa;
+			}
+
+			.yellow {
+				background-color: #f8f9fa;
+			}
+
+			.blue {
+				background-color: #f8f9fa;
+			}
+		</style>
+		<script>
+			var websock;
+
+			function start() {
+				websock = new WebSocket('ws://' + window.location.hostname + ':81/');
+				websock.onopen = function(evt) {
+					console.log('websock open');
+				};
+				websock.onclose = function(evt) {
+					console.log('websock close');
+				};
+				websock.onerror = function(evt) {
+					console.log(evt);
+				};
+				websock.onmessage = function(evt) {
+					console.log(evt);
+					var e = document.getElementById('ledstatus');
+					if (evt.data === 'ledon') {
+						e.style.color = 'red';
+					} else if (evt.data === 'ledoff') {
+						e.style.color = 'black';
+					} else {
+						console.log('unknown event');
+					}
+				};
+			}
+
+			function buttonclick(e) {
+				websock.send(e.id);
+			}
+		</script>
+	</head>
+	<body onload="javascript:start();">
+		<table width="100" height="249" border="0" align="center">
+			<tr>
+			<tr>
+			<tr>
+			<tr>
+			<tr>
+			<tr>
+			<tr>
+			<tr>
+			<tr>
+			<tr>
+			<tr>
+			<tr>
+			<tr>
+			<tr>
+			<tr>
+			<tr>
+			<tr>
+			<tr>
+			<tr>
+			<tr>
+			<tr>
+			<tr>
+			<tr>
+			<tr>
+			<tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td align="center" valign="middle">
+					<form name="form1" method="post" action="">
+						<label>
+							<button id="F" type="button" onclick="buttonclick(this);" class="button green">Forward</button>
+						</label>
+					</form>
+				</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+			<tr>
+			<tr>
+			<tr>
+			<tr>
+			<tr>
+			<tr>
+			<tr>
+			<tr>
+			<tr>
+			<tr>
+			<tr>
+				<td align="center" valign="middle">
+					<form name="form1" method="post" action="">
+						<label>
+							<button id="L" type="button" onclick="buttonclick(this);" class="button green">Left</button>
+						</label>
+					</form>
+				</td>
+				<td align="center" valign="middle">
+					<form name="form1" method="post" action="">
+						<label>
+							<button id="S" type="button" onclick="buttonclick(this);" class="button red">Stop</button>
+						</label>
+					</form>
+				</td>
+				<td align="center" valign="middle">
+					<form name="form1" method="post" action="">
+						<label>
+							<button id="R" type="button" onclick="buttonclick(this);" class="button green">Right</button>
+						</label>
+					</form>
+				</td>
+			</tr>
+			<tr>
+			<tr>
+			<tr>
+			<tr>
+			<tr>
+			<tr>
+			<tr>
+			<tr>
+			<tr>
+			<tr>
+			<tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td align="center" valign="middle">
+					<form name="form1" method="post" action="">
+						<label>
+							<button id="B" type="button" onclick="buttonclick(this);" class="button green">Backward</button>
+						</label>
+					</form>
+				</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+			<tr>
+			<tr>
+			<tr>
+			<tr>
+			<tr>
+			<tr>
+			<tr>
+			<tr>
+			<tr>
+			<tr>
+			<tr>
+			<tr>
+			<tr>
+			<tr>
+			<tr>
+			<tr>
+			<tr>
+			<tr>
+			<tr>
+			<tr>
+			<tr>
+			<tr>
+				<td align="center" valign="middle">
+					<form name="form1" method="post" action="">
+						<label>
+							<button id="ab" type="button" onclick="buttonclick(this);" class="button blue">Forward Right</button>
+						</label>
+					</form>
+				</td>
+				<td align="center" valign="middle">
+					<form name="form1" method="post" action="">
+						<label>
+							<button id="ab" type="button" onclick="buttonclick(this);" class="button blue">Forward Left</button>
+						</label>
+					</form>
+				</td>
+				<td align="center" valign="middle">
+					<form name="form1" method="post" action="">
+						<label>
+							<button id="ab" type="button" onclick="buttonclick(this);" class="button blue">Backward Right</button>
+						</label>
+					</form>
+				</td>
+				<td align="center" valign="middle">
+					<form name="form1" method="post" action="">
+						<label>
+							<button id="ab" type="button" onclick="buttonclick(this);" class="button blue">Backward Left</button>
+						</label>
+					</form>
+				</td>
+			</tr>
+			<tr>
+			<tr>
+			<tr>
+			<tr>
+			<tr>
+			<tr>
+			<tr>
+			<tr>
+			<tr>
+			<tr>
+			<tr>
+			<tr>
+			<tr>
+			<tr>
+			<tr>
+			<tr>
+			<tr>
+			<tr>
+			<tr>
+			<tr>
+			<tr>
+			<tr>
+			<tr>
+			<tr></tr>
+			<td align="center" valign="middle">
+				<form name="form1" method="post" action="">
+					<label>
+						<button id="o" type="button" onclick="buttonclick(this);" class="button yellow">CCW</button>
+					</label>
+				</form>
+			</td>
+			<td align="center" valign="middle">
+				<form name="form1" method="post" action=""> &nbsp; </form>
+			</td>
+			<td align="center" valign="middle">
+				<form name="form1" method="post" action="">
+					<label>
+						<button id="f" type="button" onclick="buttonclick(this);" class="button yellow">CW</button>
+					</label>
+				</form>
+			</td>
+			</tr>
+		</table>
+		<p class="foot"></p>
+	</body>
+</html>

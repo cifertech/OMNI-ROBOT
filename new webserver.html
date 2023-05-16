@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Normal viewport with zoom ability -->
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <!-- Disable zoom ability -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <!-- Font Awesome  `for icons` -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>OMNI</title>
+    <style>
+      /* Custom Font From Google Font */
+      @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+      /* This Block for all the items in the page */
+      * {
+        font-family: 'Roboto', sans-serif;
+        margin: 0;
+        padding: 0;
+        outline: none;
+        color: #FFEB3BFF;
+        /* Icons Color */
+      }
+
+      /* Disable Scroller */
+      html {
+        overflow-y: hidden;
+      }
+
+      body {
+        background-color: #17212b;
+        padding: 5%;
+      }
+
+      i {
+        font-size: 100px;
+        opacity: 0.5;
+        cursor: pointer;
+        transition: 0.5s;
+      }
+
+      i:hover {
+        opacity: 1;
+        transition: all;
+      }
+
+      button {
+        background-color: transparent;
+        border: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .sized_box {
+        margin: 7px;
+      }
+
+      .row {
+        flex-direction: row;
+        align-items: center;
+      }
+
+      /* Row Container */
+      .column {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin: 50px;
+      }
+
+      /* Column Container */
+      .main_row1 {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        margin: 10px;
+        padding: 0px;
+        justify-content: space-evenly;
+      }
+
+      .main_row2 {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        margin: 10px;
+        justify-content: space-evenly;
+      }
+
+      .main_row3 {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        margin: 0px;
+        justify-content: space-evenly;
+      }
+
+      .sub_row {
+        display: flex;
+        align-items: center;
+        margin: 90px;
+        font-size: 50px;
+        justify-content: space-evenly;
+      }
+
+      .sub_row i {
+        margin: 12px;
+      }
+    </style>
+    <!-- Same Script -->
+    <script>
+      var websock;
+
+      function start() {
+        websock = new WebSocket('ws://' + window.location.hostname + ':81/');
+        websock.onopen = function(evt) {
+          console.log('websock open');
+        };
+        websock.onclose = function(evt) {
+          console.log('websock close');
+        };
+        websock.onerror = function(evt) {
+          console.log(evt);
+        };
+        websock.onmessage = function(evt) {
+          console.log(evt);
+          var e = document.getElementById('ledstatus');
+          if (evt.data === 'ledon') {
+            e.style.color = 'red';
+          } else if (evt.data === 'ledoff') {
+            e.style.color = 'black';
+          } else {
+            console.log('unknown event');
+          }
+        };
+      }
+
+      function buttonclick(e) {
+        websock.send(e.id);
+      }
+    </script>
+  </head>
+  <body>
+    <h1>OMNI BOT</h1>
+    <div class="main_row1">
+      <form name="form1" method="post" action="">
+        <label>
+          <button id="a" type="button" onclick="buttonclick(this);">
+            <i class="fa fa-circle" style="font-size: 40px;"></i>
+          </button>
+        </label>
+      </form>
+      <!-- UP -->
+      <form name="form1" method="post" action="">
+        <label>
+          <button id="F" type="button" onclick="buttonclick(this);">
+            <i class="fa fa-caret-up"></i>
+          </button>
+        </label>
+      </form>
+      <form name="form1" method="post" action="">
+        <label>
+          <button id="b" type="button" onclick="buttonclick(this);">
+            <i class="fa fa-circle" style="font-size: 40px;"></i>
+          </button>
+        </label>
+      </form>
+    </div>
+    <div class="main_row2">
+      <!-- Left -->
+      <form name="form1" method="post" action="">
+        <label>
+          <button id="L" type="button" onclick="buttonclick(this);">
+            <i class="fa fa-caret-left"></i>
+          </button>
+        </label>
+      </form>
+      <!-- STOP -->
+      <form name="form1" method="post" action="">
+        <label>
+          <button id="S" type="button" onclick="buttonclick(this);">
+            <i class="fa-solid fa-square"></i>
+          </button>
+        </label>
+      </form>
+      <!-- Right -->
+      <form name="form1" method="post" action="">
+        <label>
+          <button id="R" type="button" onclick="buttonclick(this);">
+            <i class="fa fa-caret-right"></i>
+          </button>
+        </label>
+      </form>
+    </div>
+    <div class="main_row3">
+      <form name="form1" method="post" action="">
+        <label>
+          <button id="d" type="button" onclick="buttonclick(this);">
+            <i class="fa fa-circle" style="font-size: 40px;"></i>
+          </button>
+        </label>
+      </form>
+      <!-- Down -->
+      <form name="form1" method="post" action="">
+        <label>
+          <button id="B" type="button" onclick="buttonclick(this);">
+            <i class="fa fa-caret-down"></i>
+          </button>
+        </label>
+      </form>
+      <form name="form1" method="post" action="">
+        <label>
+          <button id="c" type="button" onclick="buttonclick(this);">
+            <i class="fa fa-circle" style="font-size: 40px;"></i>
+          </button>
+        </label>
+      </form>
+    </div>
+    <!-- CCW / CC buttons -->
+    <div class="sub_row">
+      <!-- CCW -->
+      <form name="form1" method="post" action="">
+        <label>
+          <button id="o" type="button" onclick="buttonclick(this);">
+            <i class="fa-solid fa-rotate-left" style="font-size: 70px;"></i>
+          </button>
+        </label>
+      </form>
+      <!-- CC -->
+      <form name="form1" method="post" action="">
+        <label>
+          <button id="f" type="button" onclick="buttonclick(this);">
+            <i class="fa fa-rotate-right" style="font-size: 70px;"></i>
+          </button>
+        </label>
+      </form>
+    </div>
+  </body>
+</html>
