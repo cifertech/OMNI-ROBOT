@@ -124,8 +124,8 @@ After completing all the steps, an access point will be created for you and by c
 <!-- Contributing -->
 ## :wave: Contributing
 
-<a href="https://github.com/cifertech/XIAO-ROBOT/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=cifertech/XIAO-ROBOT" />
+<a href="https://github.com/cifertech/OMNI-ROBOT/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=cifertech/OMNI-ROBOT" />
 </a>
 
 
